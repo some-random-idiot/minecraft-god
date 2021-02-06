@@ -1,11 +1,10 @@
 import discord
-import time
+from chest import prefix
 from subprocess import call
 
 client = discord.Client()
-prefix = "&"
-
 connected = []  # Stores a list of vc ids
+
 
 @client.event
 async def on_ready():

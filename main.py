@@ -1,10 +1,10 @@
 # Woah I'm actually doing something arguably productive now??? Ok enough of that.
 import discord
 import random
+from chest import prefix
 from chest import CustomEmojis
 
 client = discord.Client()
-prefix = "&"
 
 
 @client.event

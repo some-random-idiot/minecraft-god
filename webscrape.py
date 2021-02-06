@@ -1,10 +1,10 @@
 import discord
+from chest import prefix
 from chest import CustomEmojis
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
 client = discord.Client()
-prefix = "&"
 
 browserOption = Options()
 browserOption.headless = True
