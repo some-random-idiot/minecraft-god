@@ -20,3 +20,6 @@ class CustomEmojis:
     steve_alex_jumping = 763339957267595275
     tnt = 763064179543638086
     workbench = 763342239555780628
+
+
+prefix = "&"
