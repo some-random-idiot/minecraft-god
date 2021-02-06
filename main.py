@@ -26,7 +26,8 @@ async def on_message(message):
                       "```")
 
         fun_cmds = ("```css\n"
-                    "&build {:structure:}                \n[Builds the specified structure]"
+                    "&build {:structure:}                \n[Builds the specified structure]\n\n"
+                    "&wakeup {:user:}                    \n[Wake up a user by repeatedly changing their VC room]"
                     "```")
 
         util_cmds = ("```css\n"
