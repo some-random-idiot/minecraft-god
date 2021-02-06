@@ -1,9 +1,10 @@
 import discord
+from discord import ChannelType
 import random
+from chest import prefix
 from chest import CustomEmojis
 
 client = discord.Client()
-prefix = "&"
 
 
 @client.event
@@ -19,7 +20,7 @@ async def on_message(message):
     if message.content.startswith(f"{prefix}die"):
         await client.logout()
 
-    if message.content.startswith("&build"):
+    if message.content.startswith(f"{prefix}build"):
         structure_name = message.content[7:]
         if structure_name == "" or structure_name.replace(" ", "") == "":
             await message.channel.send("Structure name can't be empty. Consult &help for more info.")
@@ -101,6 +102,20 @@ async def on_message(message):
                                           f"{client.get_emoji(CustomEmojis.air)}{client.get_emoji(CustomEmojis.air)}{client.get_emoji(CustomEmojis.spruce_log)}")
 
                 await message.channel.send(embed=embed)
+
+    if message.content.startswith(f"{prefix}wakeup"):
+        target_member = await message.guild.fetch_member(message.content[11:-1])
+        vc_list = [channel for channel in message.guild.channels if channel.type == ChannelType.voice]
+
+        if target_member.bot:
+            await message.channel.send("Why are you trying to wake up a bot? Are you dumb?")
+        elif not target_member.voice:
+            await message.channel.send("Can't find that guy/gal sorry")
+        else:
+            await message.channel.send(f"Ok waking up {target_member.name}")
+            from random import randint
+            for i in range(15):
+                await target_member.move_to(vc_list[randint(0, len(vc_list) - 1)])
 
 
 client.run("")
